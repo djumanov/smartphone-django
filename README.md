@@ -65,3 +65,8 @@ python manage.py startapp api
 ```bash
 python manage.py migrate
 ```
+
+### 6. Create The SuperUser
+```bash
+python manage.py createsuperuser
+```
