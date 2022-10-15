@@ -70,3 +70,35 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+
+### 7. Create The Table of SmartPhone Schema
+## Database Schema
+| Field | Type | Null | Key | Default | Extra |
+| --- | --- | --- | --- | --- | --- |
+| id | int(11) | NO | PRI | NULL | auto_increment |
+| name | varchar(255) | NO | | NULL | |
+| company | varchar(255) | NO | | NULL | |
+| color | varchar(255) | NO | | NULL | |
+| RAM | int(11) | NO | | NULL | |
+| memory | int(11) | NO | | NULL | |
+| price | int(11) | NO | | NULL | |
+| created_at | datetime | NO | | NULL | |
+| updated_at | datetime | NO | | NULL | |
+| img_url | varchar(255) | NO | | NULL | |
+
+`api/models.py`
+```python
+from django.db import models
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
+    color = models.CharField(max_length=255)
+    RAM = models.IntegerField()
+    memory = models.IntegerField()
+    price = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    img_url = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
+```
