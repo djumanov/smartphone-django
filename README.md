@@ -127,3 +127,8 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
 ]
 ```
+
+### 10. make migration DB Schema
+```bash
+python manage.py makemigrations
+```
