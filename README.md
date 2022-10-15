@@ -132,3 +132,8 @@ INSTALLED_APPS = [
 ```bash
 python manage.py makemigrations
 ```
+
+### 11. migrate DB
+```bash
+python manage.py migrate
+```
