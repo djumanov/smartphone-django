@@ -60,3 +60,8 @@ django-admin startproject config .
 ```bash
 python manage.py startapp api
 ```
+
+### 5. Create The Database of The Project
+```bash
+python manage.py migrate
+```
