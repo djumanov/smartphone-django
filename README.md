@@ -178,3 +178,34 @@ urlpatterns = [
     path('api/products/', get_products),
 ]
 ```
+
+### 2. Create the get a product
+`api/views.py`
+```python
+def get_product(request: HttpRequest, id: int) -> dict:
+    if request.method == 'GET':
+        product = Product.objects.get(id=id)
+        #Check if the product exists using the id    
+        product_json = {
+                'id': product.id,
+                'name': product.name,
+                'company': product.company,
+                'color': product.color,
+                'RAM': product.RAM,
+                'memory': product.memory,
+                'price': product.price,
+                'created_at': product.created_at,
+                'updated_at': product.updated_at,
+                'img_url': product.img_url,
+            }
+
+        return JsonResponse({'product': product_json})
+```
+`config/urls.py`
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/products/', get_products),
+    path('api/product/<int:id>', get_product),
+]
+```
