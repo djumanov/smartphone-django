@@ -290,3 +290,13 @@ def update_product(request: HttpRequest, id: int) -> JsonResponse:
             }
         return JsonResponse({'product': product_json})
 ```
+
+### 5. delete view
+`api/views.py`
+```python
+def delete_product(request: HttpRequest, id: int) -> JsonResponse:
+    if request.method == 'POST':
+        product = Product.objects.get(id=id)
+        product.delete()
+        return JsonResponse({'product': 200})
+```

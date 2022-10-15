@@ -107,3 +107,10 @@ def update_product(request: HttpRequest, id: int) -> JsonResponse:
                 'img_url':    product.img_url,
             }
         return JsonResponse({'product': product_json})
+
+
+def delete_product(request: HttpRequest, id: int) -> JsonResponse:
+    if request.method == 'POST':
+        product = Product.objects.get(id=id)
+        product.delete()
+        return JsonResponse({'product': 200})
