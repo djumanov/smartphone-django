@@ -72,3 +72,38 @@ def add_product(request: HttpRequest) -> JsonResponse:
                 'img_url':    new_product.img_url,
             }
         return JsonResponse({'new_product': product_json})
+
+
+def update_product(request: HttpRequest, id: int) -> JsonResponse:
+    if request.method == 'POST':
+        data = request.POST
+        product = Product.objects.get(id=id)
+        if data.get('name') is not None:
+            product.name    = data['name']
+        if data.get('company') is not None:
+            product.company = data['company']
+        if data.get('color') is not None:
+            product.color   = data['color']
+        if data.get('RAM') is not None:
+            product.RAM     = data['RAM']
+        if data.get('memory') is not None:
+            product.memory  = data['memory']
+        if data.get('price') is not None:
+            product.price   = data['price']
+        if data.get('img_url') is not None:
+            product.img_url = data['img_url']
+        product.save()
+
+        product_json = {
+                'id':         product.id,
+                'name':       product.name,
+                'company':    product.company,
+                'color':      product.color,
+                'RAM':        product.RAM,
+                'memory':     product.memory,
+                'price':      product.price,
+                'created_at': product.created_at,
+                'updated_at': product.updated_at,
+                'img_url':    product.img_url,
+            }
+        return JsonResponse({'product': product_json})
