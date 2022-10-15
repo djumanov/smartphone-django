@@ -56,3 +56,7 @@ pip install -r requirements.txt
 django-admin startproject config .
 ```
 
+### 4. Create APP of The Project
+```bash
+python manage.py startapp api
+```
