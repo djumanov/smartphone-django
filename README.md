@@ -209,3 +209,46 @@ urlpatterns = [
     path('api/product/<int:id>', get_product),
 ]
 ```
+
+### 3. Add product api
+`api/views.py`
+```python
+def add_product(request: HttpRequest) -> JsonResponse:
+    if request.method == 'POST':
+        data = request.POST
+        new_product = Product()
+        new_product.name    = data['name']
+        new_product.company = data['company']
+        new_product.color   = data['color']
+        new_product.RAM     = data['RAM']
+        new_product.memory  = data['memory']
+        new_product.price   = data['price']
+        new_product.img_url = data['img_url']
+        new_product.save()
+
+        product_json = {
+                'id':         new_product.id,
+                'name':       new_product.name,
+                'company':    new_product.company,
+                'color':      new_product.color,
+                'RAM':        new_product.RAM,
+                'memory':     new_product.memory,
+                'price':      new_product.price,
+                'created_at': new_product.created_at,
+                'updated_at': new_product.updated_at,
+                'img_url':    new_product.img_url,
+            }
+        return JsonResponse({'new_product': product_json})
+```
+`config/settings.py`
+```python
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+```

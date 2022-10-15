@@ -48,7 +48,6 @@ def get_product(request: HttpRequest, id: int) -> JsonResponse:
 
 def add_product(request: HttpRequest) -> JsonResponse:
     if request.method == 'POST':
-        print('-------okokokokokokok-------')
         data = request.POST
         new_product = Product()
         new_product.name    = data['name']
