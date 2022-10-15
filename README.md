@@ -102,3 +102,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 ```
+
+### 8. Regisrtate Models
+`api/admin.py`
+```python
+from .models import Product
+
+tables = [Product]
+admin.site.register(tables)
+```
