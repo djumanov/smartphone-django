@@ -111,3 +111,19 @@ from .models import Product
 tables = [Product]
 admin.site.register(tables)
 ```
+
+### 9. Register the smartphone's app to the django's project
+`config/settings.py`
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # APPS
+    'api.apps.ApiConfig',
+]
+```
